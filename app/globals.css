@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-game-dark text-white font-sans;
+    overflow: hidden; /* Evita scroll global */
+  }
+}
+
+@layer components {
+  .game-button {
+    @apply bg-game-green text-game-blue px-5 py-3 rounded-lg font-bold text-lg cursor-pointer transition-all duration-200 hover:scale-105 hover:bg-green-400 shadow-lg;
+  }
+  
+  /* UX OPTIMIZADO: Contenedor que cabe perfectamente en pantalla */
+  .game-container-optimized {
+    @apply relative bg-game-blue border-2 border-game-accent rounded-xl overflow-hidden shadow-2xl;
+    /* Dimensiones exactas sin scroll */
+    width: 500px !important;
+    height: 600px !important;
+    /* SIN líneas innecesarias */
+  }
+  
+  /* Mantener original para compatibilidad */
+  .game-container {
+    @apply relative w-full max-w-4xl mx-auto bg-game-blue border-2 border-game-accent rounded-xl overflow-hidden shadow-2xl;
+    aspect-ratio: 16/9;
+  }
+  
+  /* UX: Misiles más pequeños y mejor proporcionados - SIN transform para píxeles exactos */
+  .missile-optimized {
+    @apply absolute w-12 h-12 bg-game-red rounded-full flex items-center justify-center text-white font-bold text-xs;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.8);
+    /* SIN transform: translateX(-50%) para usar píxeles exactos */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Mantener original */
+  .missile {
+    @apply absolute w-16 h-16 bg-game-red rounded-full flex items-center justify-center text-white font-bold text-base;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.8);
+    transform: translateX(-50%);
+  }
+  
+  /* UX: Láser más delgado y preciso - SIN transform para píxeles exactos */
+  .player-missile-optimized {
+    @apply absolute w-1 h-8 bg-game-green rounded-sm;
+    /* SIN transform: translateX(-50%) para usar píxeles exactos */
+    box-shadow: 0 0 8px theme('colors.game-green');
+    background: linear-gradient(0deg, #00ff88 0%, #00cc66 50%, #ffffff 100%);
+  }
+  
+  /* Mantener original */
+  .player-missile {
+    @apply absolute w-1 h-4 bg-game-green rounded-sm;
+    transform: translateX(-50%);
+    box-shadow: 0 0 5px theme('colors.game-green');
+  }
+  
+  /* UX: Tanque perfectamente alineado - SIN transform para píxeles exactos */
+  .tank-optimized {
+    @apply absolute w-12 h-10 bg-game-green flex items-center justify-center text-white font-bold text-sm;
+    bottom: 50px;
+    /* SIN transform: translateX(-50%) para usar píxeles exactos */
+    clip-path: polygon(0% 50%, 20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    /* CRÍTICO: Sin transition para movimiento instantáneo */
+    transition: none !important;
+  }
+  
+  /* Mantener original */
+  .tank {
+    @apply absolute w-16 h-10 bg-game-green flex items-center justify-center text-white font-bold text-xl transition-all duration-300;
+    bottom: 20px;
+    transform: translateX(-50%);
+    clip-path: polygon(0% 50%, 20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  }
+}
+
+/* UX: Animaciones optimizadas */
+.explosion-optimized {
+  @apply absolute w-16 h-16 rounded-full animate-explode;
+  background: radial-gradient(circle, #ff4444 0%, #ff6666 30%, transparent 70%);
+  border: 3px solid #ffaa00;
+}
+
+.penalty-optimized {
+  @apply absolute text-game-red text-2xl font-bold animate-floatUp;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
+  font-family: 'Arial Black', sans-serif;
+}
+
+.level-up-message-optimized {
+  @apply absolute top-1/2 left-1/2 bg-game-green text-game-blue px-6 py-4 rounded-xl text-xl font-bold animate-popIn z-50;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Mantener animaciones originales */
+.explosion {
+  @apply absolute w-16 h-16 rounded-full animate-explode;
+  background: radial-gradient(circle, #ff4444 0%, transparent 70%);
+}
+
+.penalty {
+  @apply absolute text-game-red text-2xl font-bold animate-floatUp;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.level-up-message {
+  @apply absolute top-1/2 left-1/2 bg-game-green text-game-blue px-8 py-4 rounded-xl text-2xl font-bold animate-popIn z-50;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+/* Efectos especiales para nivel hardcore */
+.hardcore-mode {
+  animation: pulse 0.5s infinite alternate;
+  border-color: #ff4444 !important;
+}
+
+.hardcore-tank {
+  @apply bg-red-500;
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+}
+
+/* UX: Efectos sutiles para mejor rendimiento */
+.player-missile-optimized::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+/* Efectos de partículas optimizados */
+@keyframes sparkle-optimized {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.2) rotate(180deg); opacity: 0; }
+}
+
+.explosion-optimized::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 40%, #ffff00 50%, transparent 60%);
+  animation: sparkle-optimized 0.3s ease-out;
+}
+
+/* UX RESPONSIVE: Adaptado para diferentes pantallas SIN scroll */
+@media (max-width: 768px) {
+  .game-container-optimized {
+    width: 350px !important;
+    height: 500px !important;
+  }
+  
+  .missile-optimized {
+    @apply w-10 h-10 text-xs;
+  }
+  
+  .tank-optimized {
+    @apply w-10 h-8 text-xs;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game-container-optimized {
+    width: 600px !important;
+    height: 700px !important;
+  }
+  
+  .missile-optimized {
+    @apply w-14 h-14 text-sm;
+  }
+}
+
+/* UX: Asegurar que NUNCA haya scroll */
+.game-container-optimized,
+.game-container-optimized * {
+  box-sizing: border-box;
+}
+
+/* ELIMINADAS: Todas las líneas guía que causaban problemas */
