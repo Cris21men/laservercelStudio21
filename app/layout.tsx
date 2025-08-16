@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   keywords: ['matemáticas', 'juego educativo', 'misiles', 'Studio21', 'aprendizaje'],
   authors: [{ name: 'Studio21' }],
   openGraph: {
-    title: 'Desafío Matemáticos Studio21',
+    title: '🎮 Desafío Matemáticos Studio21',
     description: 'Juego educativo de matemáticas con misiles',
     type: 'website',
   },
@@ -37,3 +37,4 @@ export default function RootLayout({
   )
 
 }
+
