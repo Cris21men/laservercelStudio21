@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: { icon: '/images/favicon.png' },
+  <link rel="icon" href="/images/favicon.png" />
 }
 
 export default function RootLayout({
@@ -35,6 +35,7 @@ export default function RootLayout({
   )
 
 }
+
 
 
 
