@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Head from 'next/head'; // Importa Head
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +18,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: { icon: '/images/favicon.png' }, // Esto es para el manifest, no reemplaza el <link>
+  icons: [
+    { rel: 'icon', url: '/images/favicon.png' },
+    { rel: 'apple-touch-icon', url: '/images/favicon.png' },
+  ],
 };
 
 export default function RootLayout({
@@ -38,8 +40,6 @@ export default function RootLayout({
     </html>
   );
 }
-
-
 
 
 
