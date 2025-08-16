@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Desafío Matemáticos Studio21',
+  title: '🎮 Desafío Matemáticos Studio21',
   description: 'Juego educativo de matemáticas con misiles. Mejora tus habilidades matemáticas mientras te diviertes.',
   keywords: ['matemáticas', 'juego educativo', 'misiles', 'Studio21', 'aprendizaje'],
   authors: [{ name: 'Studio21' }],
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  icons: {
+    icon: '/images/favicon.png',   // 👈 aquí tu favicon
   },
 }
 
@@ -32,4 +35,5 @@ export default function RootLayout({
       </body>
     </html>
   )
+
 }
