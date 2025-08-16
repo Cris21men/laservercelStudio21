@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   description: 'Juego educativo de matemáticas con misiles. Mejora tus habilidades matemáticas mientras te diviertes.',
   keywords: ['matemáticas', 'juego educativo', 'misiles', 'Studio21', 'aprendizaje'],
   authors: [{ name: 'Studio21' }],
-   icons: { icon: '/images/favicon.png' },
   openGraph: {
     title: '🎮 Desafío Matemáticos Studio21',
     description: 'Juego educativo de matemáticas con misiles',
@@ -36,6 +35,7 @@ export default function RootLayout({
   )
 
 }
+
 
 
 
