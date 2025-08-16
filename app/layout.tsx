@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: '/images/favicon.png',   // 👈 aquí tu favicon
+    icon: '/favicon.png',   // 👈 aquí tu favicon
   },
 }
 
@@ -37,4 +37,5 @@ export default function RootLayout({
   )
 
 }
+
 
