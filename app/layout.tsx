@@ -1,8 +1,9 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Head from 'next/head'; // Importa Head
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: '🎮 Desafío Matemáticos Studio21',
@@ -18,24 +19,25 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  <link rel="icon" href="/images/favicon.png" />
-}
+  icons: { icon: '/images/favicon.png' }, // Esto es para el manifest, no reemplaza el <link>
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="es">
+      <head>
+        <link rel="icon" href="/images/favicon.png" />
+      </head>
       <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>
-  )
-
+  );
 }
-
 
 
 
