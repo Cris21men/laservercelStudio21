@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +19,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: '/images/favicon.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   }
 }
 
@@ -31,9 +32,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <head>
-        <link rel="icon" href="/images/favicon.png" type="image/png" />
-      </head>
       <body className={`${inter.className} antialiased`}>
         {children}
       </body>
